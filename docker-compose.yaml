@@ -1,0 +1,24 @@
+version: "3"
+services:
+  api:
+    build: .
+    container_name: api-app-dev
+    profiles:
+      - all
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/usr/src/app
+    command: ["npm", "run", "start:dev"]
+    depends_on:
+      - api_db
+  api_db:
+    image: mongo
+    profiles:
+      - deps
+      - all
+    container_name: mongo-app-dev
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/db
