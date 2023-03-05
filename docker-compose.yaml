@@ -7,9 +7,6 @@ services:
       - all
     ports:
       - "3000:3000"
-    volumes:
-      - ./api:/usr/src/app
-    command: ["npm", "run", "start:dev"]
     depends_on:
       - api_db
   api_db:

@@ -1,5 +1,24 @@
 ## Requirements
-Either just docker - run
+
+Start with `cp .env.example .env` and population of the `SNOWFLAKE-*` variables, see `docs` for details.
+
+
+### Just to start
+
+```
+make build
+make start
+```
+
+
+### Dev start
+
+```
+nvm use
+npm i
+make start-dev
+```
+
 ## Based on nestjs
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
