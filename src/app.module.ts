@@ -3,9 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { SnowflakeModule } from './services/snowflake/snowflake.module';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TablesModule } from './tables/tables.module';
 
 @Module({
@@ -30,7 +27,5 @@ import { TablesModule } from './tables/tables.module';
     }),
     TablesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

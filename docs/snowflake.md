@@ -57,3 +57,14 @@ CREATE TABLE employees.employee_salary (
     start_date DATE
 );
 ```
+
+
+## check if we are updating
+
+```sql
+-- choose appropriate table
+ALTER TABLE WEB_SALES ADD COLUMN new_column_test INTEGER;
+
+-- metadata will *probably* not be updated immediately
+REFRESH METADATA table WEB_SALES;
+```

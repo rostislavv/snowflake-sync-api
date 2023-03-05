@@ -1,19 +1,22 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
+import { PaginationParams } from '../common/pagination';
 import { TablesService } from './tables.service';
 
 @Controller('tables')
 export class TablesController {
   constructor(private readonly tablesService: TablesService) {}
 
-  @Get()
-  findAll(): ReturnType<typeof TablesService.prototype.findAll> {
-    return this.tablesService.findAll();
+  @Get(':table')
+  findForTable(
+    @Param('table') tableName: string,
+  ): ReturnType<typeof TablesService.prototype.findForTable> {
+    return this.tablesService.findForTable(tableName);
   }
 
-  @Get(':id')
-  findOne(
-    @Param('id') id: string,
-  ): ReturnType<typeof TablesService.prototype.findOne> {
-    return this.tablesService.findOne(id);
+  @Get()
+  findAll(
+    @Query() { startId, skip, limit }: PaginationParams,
+  ): ReturnType<typeof TablesService.prototype.findAll> {
+    return this.tablesService.findAll(skip, limit, startId);
   }
 }
